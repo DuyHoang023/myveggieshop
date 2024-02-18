@@ -35,7 +35,7 @@
 
                         <div class="form-group col-sm-12">
 
-                            <div class="message alert alert-success"></div>
+                            <div class="message alert alert-success" style="display:none"></div>
                         </div>
                         <div class="form-group col-sm-12">
                             <button type="submit" class="btn btn-sm btn-primary pull-right">Gửi</button>
