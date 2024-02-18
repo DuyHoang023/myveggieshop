@@ -11,5 +11,7 @@ class ContactController
     // gởi mail đến chủ cửa hàng
     function sendEmail()
     {
+        sleep(3);
+        echo 'Đã gởi mail thành công'; //giả
     }
 }
