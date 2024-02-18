@@ -62,16 +62,16 @@ $(function () {
       // alert($(form).serialize());
       $('.message').html('<i class="fas fa-spinner fa-spin"></i> Hệ thống đang gởi mail, vui lòng chờ ...');
       $('.message').show();//display:block
-      // $.ajax({
-      //   type: "POST",
-      //   url: "?c=contact&a=sendEmail",
-      //   data: $(form).serialize(),
-      //   success: function (response) {
-      //     $('.message').html(response);
-      //     //reset form
-      //     // form.reset();
-      //   }
-      // });
+      $.ajax({
+        type: "POST",
+        url: "?c=contact&a=sendEmail",
+        data: $(form).serialize(),
+        success: function (response) {
+          $('.message').html(response);
+          //reset form
+          // form.reset();
+        }
+      });
     }
   });
 
