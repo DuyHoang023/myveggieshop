@@ -32,6 +32,11 @@
 
                             <textarea class="form-control" placeholder="Nội dung" name="content" rows="10" required></textarea>
                         </div>
+
+                        <div class="form-group col-sm-12">
+
+                            <div class="message alert alert-success"></div>
+                        </div>
                         <div class="form-group col-sm-12">
                             <button type="submit" class="btn btn-sm btn-primary pull-right">Gửi</button>
                         </div>
