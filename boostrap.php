@@ -40,3 +40,5 @@ require_once "../model/cart/Cart.php";
 require_once "../model/cart/CartStorage.php";
 require_once "../model/newsletter/NewsLetter.php";
 require_once "../model/newsletter/NewsLetterRepository.php";
+
+require_once "../service/EmailService.php";
