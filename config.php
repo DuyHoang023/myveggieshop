@@ -1,4 +1,5 @@
 <?php
+define("APP_NAME", "Myveggieshop");
 define('SEVERNAME', 'localhost');
 define('USERNAME', 'root');
 define('PASSWORD', '');
