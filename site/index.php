@@ -1,4 +1,6 @@
 <?php
+// import autoload
+require '../vendor/autoload.php';
 session_start(); // $_SESSION
 // router của phần giao diện người dùng
 $c = $_GET['c'] ?? 'home';
