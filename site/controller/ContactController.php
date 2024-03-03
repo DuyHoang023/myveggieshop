@@ -16,6 +16,7 @@ class ContactController
         $email = $_POST['email'];
         $mobile = $_POST['mobile'];
         $message = $_POST['content'];
+        $website = get_domain(); //từ file bootstrap.php
         $to = SHOP_OWNER;
         $subject = APP_NAME . ' - liên hệ';
         $content = "
@@ -26,7 +27,7 @@ class ContactController
         Email: $email, <br>
         Nội dung: $message<br>
         ------------------<br>
-        Được gởi từ trang web: http://myveggieshop.com
+        Được gởi từ trang web: $website
         ";
         $emailService = new EmailService;
         $emailService->send($to, $subject, $content);

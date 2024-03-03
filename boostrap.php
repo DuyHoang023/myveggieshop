@@ -42,3 +42,33 @@ require_once "../model/newsletter/NewsLetter.php";
 require_once "../model/newsletter/NewsLetterRepository.php";
 
 require_once "../service/EmailService.php";
+
+// myveggieshop.com
+function get_host_name()
+{
+    return $_SERVER['HTTP_HOST'];
+}
+
+function get_host_name_without_port()
+{
+    return $_SERVER['SERVER_NAME'];
+}
+
+//http://
+function getProtocol()
+{
+    $protocol = ((!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off') || $_SERVER['SERVER_PORT'] == 443) ? "https://" : "http://";
+    return $protocol;
+}
+
+//http://myveggieshop.com
+function get_domain()
+{
+    $protocol = getProtocol();
+    return $protocol . $_SERVER['HTTP_HOST'];
+}
+//http://myveggieshop.com/site
+function get_domain_site()
+{
+    return get_domain() . "/site";
+}
