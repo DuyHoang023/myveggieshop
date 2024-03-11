@@ -21,7 +21,7 @@
                 </a>
             </div>
             <div class="quickview icon">
-                <a class="btn btn-outline-inverse" href="chi-tiet-san-pham.html" title="Xem nhanh">
+                <a class="btn btn-outline-inverse" href="?c=product&a=detail&id=<?= $product->getId() ?>" title="Xem nhanh">
                     Xem chi tiết <i class="fa fa-eye"></i>
                 </a>
             </div>

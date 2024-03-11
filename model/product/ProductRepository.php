@@ -52,7 +52,7 @@ class ProductRepository
         return $products;
     }
 
-    function getBy($array_conds, $array_sorts, $page, $itemPerPage)
+    function getBy($array_conds = array(), $array_sorts = array(), $page = null, $itemPerPage = null)
     {
         if ($page) {
             $pageIndex = $page - 1;
@@ -88,6 +88,7 @@ class ProductRepository
         }
         // ORDER BY featured DESC
 
+        $limit = null;
         if ($itemPerPage) {
             $start = $pageIndex * $itemPerPage;
             $limit = "LIMIT $start, $itemPerPage";
@@ -111,6 +112,15 @@ class ProductRepository
         }
         // ORDER BY featured DESC
         return $this->fetchAll($cond, $sort);
+    }
+
+    function find($id)
+    {
+        global $conn;
+        $condition = "id = $id";
+        $products = $this->fetchAll($condition);
+        $product = current($products);
+        return $product;
     }
 
     function getTotalPage($pattern = null, $array_conds = null, $array_sorts = null, $page, $itemPerPage)

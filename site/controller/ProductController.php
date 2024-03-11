@@ -69,4 +69,27 @@
         $totalPage = $productRepository->getTotalPage($pattern, $conds, $sorts, $page, $item_per_page);
         require 'view/product/index.php';
     }
+
+    function detail()
+    {
+        $pattern = $_GET['pattern'] ?? null;
+
+        $id = $_GET['id'];
+        $productRepository = new ProductRepository;
+        $product = $productRepository->find($id);
+        $categoryRepository = new CategoryRepository;
+        $categories = $categoryRepository->getAll();
+        $category_id = $product->getCategoryId();
+        // sản phẩm có liên quan là sản phẩm có cùng danh mục
+        $conds = [
+            'category_id' => [
+                'type' => '=',
+                'val' => $category_id //3
+            ]
+        ];
+
+        // SELECT * FROM view_product WHERE category_id=3
+        $relatedProducts = $productRepository->getBy($conds);
+        require 'view/product/detail.php';
+    }
 }

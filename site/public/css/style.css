@@ -350,7 +350,8 @@ main .row .button-product-action {
     align-items: center;
 }
 
-main .product-card:hover .button-product-action {
+main .product-card:hover .button-product-action,
+main .item.thumbnail:hover .button-product-action {
     transform: scale(1);
 }
 
@@ -668,19 +669,6 @@ main .product-detail .product-quantity {
     width: 70px;
 }
 
-main .product-detail .product-detail-carousel-slider img {
-    width: 80px;
-    cursor: pointer;
-}
-
-main .product-detail .product-detail-carousel-slider .item,
-main .product-detail .product-related .owl-carousel .item {
-    width: 99%;
-}
-
-main .product-detail .product-detail-carousel-slider {
-    margin-top: 10px;
-}
 
 /*.zoomWindow {
     border:1px solid #eaeaea !important;
@@ -771,37 +759,6 @@ main .image .img-responsive {
 }
 
 /*custominze button next/previous of owl*/
-main .product-detail .product-related .owl-carousel {
-    position: relative;
-}
-
-main .product-detail .product-related .owl-prev,
-main .product-detail .product-related .owl-next {
-
-    position: absolute;
-    top: 45%;
-    transform: translate(0, -50%);
-}
-
-main .product-detail .product-related .owl-prev:hover,
-main .product-detail .product-related .owl-next:hover {
-    background: none;
-}
-
-main .product-detail .product-related .owl-prev>span,
-main .product-detail .product-related .owl-next>span {
-    font-size: 50px;
-    color: #898989;
-}
-
-main .product-detail .product-related .owl-prev {
-    left: 0;
-}
-
-main .product-detail .product-related .owl-next {
-    right: 0;
-}
-
 .pagination>li>a {
     color: var(--main-c);
     border-color: var(--main-c) !important;

@@ -141,4 +141,25 @@ class Product
 	{
 		return $this->sale_price;
 	}
+
+	function getImageItems()
+	{
+		$imageItemRepository = new ImageItemRepository();
+		$imageItems = $imageItemRepository->getByProductId($this->id);
+		return $imageItems;
+	}
+
+	function getBrand()
+	{
+		$brandRepository = new BrandRepository();
+		$brand = $brandRepository->find($this->brand_id);
+		return $brand;
+	}
+
+	function getComments()
+	{
+		$commentRepository = new CommentRepository();
+		$comments = $commentRepository->getByProductId($this->id);
+		return $comments;
+	}
 }

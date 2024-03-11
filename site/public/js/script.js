@@ -146,16 +146,50 @@ $(function () {
   });
 
   // Carousel
-  $(".owl-carousel").owlCarousel({
+  $("main .product-detail .product-detail-carousel-slider .owl-carousel").owlCarousel({
+    margin: 10,
+    nav: true,
+  });
+
+  // Hiển thị carousel for relative products
+  $("main .product-detail .product-related .owl-carousel").owlCarousel({
     loop: true,
     margin: 10,
     nav: true,
-    autoplay: true,
+    dots: false,
     responsive: {
       0: {
-        items: 1,
+        items: 2,
+      },
+      600: {
+        items: 4,
+      },
+      1000: {
+        items: 5,
       },
     },
+  });
+
+  $("main .product-detail .product-description .rating-input").rating({
+    min: 0,
+    max: 5,
+    step: 1,
+    size: "md",
+    stars: "5",
+    showClear: false,
+    showCaption: false,
+  });
+
+  $("main .product-detail .product-description .answered-rating-input").rating({
+    min: 0,
+    max: 5,
+    step: 1,
+    size: "md",
+    stars: "5",
+    showClear: false,
+    showCaption: false,
+    displayOnly: false,
+    hoverEnabled: true,
   });
 });
 
