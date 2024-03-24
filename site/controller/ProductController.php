@@ -60,7 +60,7 @@
 
         $productRepository = new ProductRepository;
         if ($pattern) {
-            $products = $productRepository->getByPattern($pattern, $sorts);
+            $products = $productRepository->getByPattern($pattern, $sorts, $page, $item_per_page);
         } else {
             $products = $productRepository->getBy($conds, $sorts, $page, $item_per_page);
         }
@@ -91,5 +91,28 @@
         // SELECT * FROM view_product WHERE category_id=3
         $relatedProducts = $productRepository->getBy($conds);
         require 'view/product/detail.php';
+    }
+
+    function searchBar()
+    {
+        $page = 1;
+        $item_per_page = 4;
+        $pattern = $_GET['pattern'];
+        $productRepository = new ProductRepository;
+        $products = '';
+        if ($pattern !== '') {
+            $products = $productRepository->getByPattern($pattern, $sorts = null, $page, $item_per_page);
+        }
+        $jsonProducts = array();
+        if ($products !== '') {
+            foreach ($products as $product) {
+                $jsonProducts[] = array(
+                    'id' => $product->getId(),
+                    'name' => $product->getName(),
+                    'featured_image' => $product->getFeaturedImage(),
+                );
+            }
+        }
+        echo json_encode($jsonProducts);
     }
 }

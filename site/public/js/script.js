@@ -191,6 +191,30 @@ $(function () {
     displayOnly: false,
     hoverEnabled: true,
   });
+
+  // ajax fetch item from db to display on search
+  $('.search').on('input', function () {
+    console.log((this).val);
+    $.ajax({
+      type: "GET",
+      url: "index.php?c=product&a=searchBar",
+      data: { pattern: (this).value },
+    }).done(function (data) {
+      // Parse the JSON response
+      var products = JSON.parse(data);
+      var productsList = '';
+      products.forEach(function (product) {
+        // productsList += '<li>' + product.name + '</li>';
+        productsList += `<a class="search-result-item" href="?c=product&a=detail&id=${product.id}"><img src="../upload/${product.featured_image}" width="100"> ${product.name}</a>`;
+      });
+      $('.search-result').html(productsList);
+      if ($('.search-result').html() !== '') {
+        $('.search-result').show();
+      } else {
+        $('.search-result').hide();
+      }
+    });
+  })
 });
 
 // Cập nhật giá trị của 1 param cụ thể

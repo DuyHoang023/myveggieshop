@@ -185,6 +185,17 @@ header form.header-form {
     position: relative;
 }
 
+a.search-result-item {
+    margin: 10px 0;
+    display: block;
+    color: #333;
+}
+
+.search-result-item:hover {
+    background-color: var(--link-hover-c);
+    color: #fff;
+}
+
 /*Destop menu*/
 nav.desktop-menu {
     background-color: var(--main-c);

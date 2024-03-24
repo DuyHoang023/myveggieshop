@@ -98,20 +98,21 @@ class ProductRepository
         return $this->fetchAll($cond, $sort, $limit);
     }
 
-    function getByPattern($pattern, $array_sorts)
+    function getByPattern($pattern, $array_sorts = null, $page, $item_per_page)
     {
-        $cond = "name LIKE '%$pattern%'";
-        $temp = [];
-        foreach ($array_sorts as $key => $value) {
-            $temp[] = "$key $value";
+        if ($page) {
+            $pageIndex = $page - 1;
         }
 
-        $sort = null;
-        if (count($array_sorts)) {
-            $sort = "ORDER BY " . implode(" ", $temp);
+        $cond = "name LIKE '%$pattern%'";
+
+        $limit = null;
+        if ($item_per_page) {
+            $start = $pageIndex * $item_per_page;
+            $limit = "LIMIT $start, $item_per_page";
         }
-        // ORDER BY featured DESC
-        return $this->fetchAll($cond, $sort);
+
+        return $this->fetchAll($cond, $sort = null, $limit);
     }
 
     function find($id)
