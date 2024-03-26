@@ -13,6 +13,7 @@ function openCategoryMobile() {
 }
 
 $(function () {
+  //Validate register form
   $(".form-register, .reset-password").validate({
     rules: {
       // simple rule, converted to {required:true}
@@ -86,6 +87,70 @@ $(function () {
       },
       hiddenRecaptcha: {
         required: "Vui lòng xác nhận Google reCAPTCHA",
+      },
+    },
+  });
+
+  $(".info-account").validate({
+    rules: {
+      // simple rule, converted to {required:true}
+      fullname: {
+        required: true,
+        maxlength: 50,
+        regex:
+          /^[a-zAZÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\s]+$/i,
+      },
+      mobile: {
+        required: true,
+        regex: /^0([0-9]{9,9})$/,
+      },
+      password: {
+        regex: /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/,
+      },
+      password_confirmation: {
+        equalTo: "[name=password]",
+      },
+    },
+
+    messages: {
+      fullname: {
+        required: "Vui lòng nhập họ và tên",
+        maxlength: "Vui lòng nhập không quá 50 ký tự",
+        regex: "Vui lòng nhập đúng họ và tên",
+      },
+      // compound rule
+      mobile: {
+        required: "Vui lòng nhập số điện thoại",
+        regex: "Vui lòng nhập đúng định dạng số điện thoại.vd: 0932538468",
+      },
+      password: {
+        regex:
+          "Mật khẩu phải ít nhất 8 ký tự bao gồm chữ hoa, chữ thường, số và ký tự đặt biệt. vd: 123456aA@",
+      },
+      password_confirmation: {
+        equalTo: "Mật khẩu không trùng khớp",
+      },
+    },
+  });
+
+  $(".form-login").validate({
+    rules: {
+      // simple rule, converted to {required:true}
+      email: {
+        required: true,
+        email: true,
+      },
+      password: {
+        required: true,
+      },
+    },
+    messages: {
+      email: {
+        required: "Vui lòng nhập email",
+        email: "Vui lòng nhập đúng định dạng email. vd: abc@gmail.com",
+      },
+      password: {
+        required: "Vui lòng nhập mật khẩu",
       },
     },
   });

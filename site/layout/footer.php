@@ -76,7 +76,7 @@
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                 <h3 class="modal-title text-center">Đăng ký</h3>
             </div>
-            <form action="#" method="POST" role="form">
+            <form action="#" method="POST" role="form" class="form-register">
                 <div class="modal-body">
                     <div class="form-group">
                         <input type="text" class="form-control" name="fullname" placeholder="Họ và tên" required oninvalid="this.setCustomValidity('Vui lòng nhập tên của bạn')" oninput="this.setCustomValidity('')">
