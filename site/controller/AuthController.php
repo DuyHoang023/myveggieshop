@@ -7,7 +7,13 @@ class AuthController
         $password = $_POST['password'];
         $customerRepository = new CustomerRepository;
         $customer = $customerRepository->findEmail($email);
-        var_dump($customer);
+        if (!$customer) {
+            $_SESSION['error'] = "Lỗi: Email $email không tồn tại trong hệ thống";
+            // về trang chủ
+            header('location: /');
+            exit;
+        }
+        echo 'Tiếp tục kiểm tra';
     }
 
     function logout()
