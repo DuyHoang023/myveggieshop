@@ -13,6 +13,82 @@ function openCategoryMobile() {
 }
 
 $(function () {
+  $(".form-register, .reset-password").validate({
+    rules: {
+      // simple rule, converted to {required:true}
+      fullname: {
+        required: true,
+        maxlength: 50,
+        regex:
+          /^[a-zAZÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\s]+$/i,
+      },
+      mobile: {
+        required: true,
+        regex: /^0([0-9]{9,9})$/,
+      },
+
+      email: {
+        required: true,
+        maxlength: 50,
+        email: true,
+        // server trả về false là lỗi, true là không lỗi
+        remote: "?c=customer&a=notExistingEmail",
+      },
+
+      password: {
+        required: true,
+        regex: /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/,
+      },
+
+      password_confirmation: {
+        required: true,
+        equalTo: "[name=password]",
+      },
+
+      hiddenRecaptcha: {
+        //true: lỗi
+        //false: passed
+        required: function () {
+          if (grecaptcha.getResponse() == "") {
+            return true;
+          } else {
+            return false;
+          }
+        },
+      },
+    },
+
+    messages: {
+      fullname: {
+        required: "Vui lòng nhập họ và tên",
+        maxlength: "Vui lòng nhập không quá 50 ký tự",
+        regex: "Vui lòng nhập số và ký tự đặc biệt",
+      },
+      mobile: {
+        required: "Vui lòng nhập số điện thoại",
+        regex: "Vui lòng nhập 10 con số bắt đầu là 0",
+      },
+      email: {
+        required: "Vui lòng nhập email",
+        maxlength: "Vui lòng nhập không quá 50 ký tự",
+        email: "Vui lòng nhập đúng định dạng email. vd: a@gmail.com",
+        remote: "Email đã được đăng ký. Vui lòng nhập lại.",
+      },
+      password: {
+        required: "Vui lòng nhập mật khẩu",
+        regex:
+          "Mật khẩu ít nhất 8 ký tự, bao gồm chữ hoa, chữ thường, số và ký tự đặc biệt",
+      },
+
+      password_confirmation: {
+        required: "Vui lòng nhập lại mật khẩu",
+        equalTo: "Nhập lại mật khẩu phải trùng khớp",
+      },
+      hiddenRecaptcha: {
+        required: "Vui lòng xác nhận Google reCAPTCHA",
+      },
+    },
+  });
 
   //contact
   $(".form-contact").validate({

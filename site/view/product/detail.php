@@ -38,7 +38,9 @@
                         </div>
                         <div class="product-item-price">
                             <span>Giá: </span>
-                            <span class="product-item-regular"><?= number_format($product->getPrice()) ?>₫</span>
+                            <?php if ($product->getPrice() != $product->getSalePrice()) : ?>
+                                <span class="product-item-regular"><?= number_format($product->getPrice()) ?>₫</span>
+                            <?php endif ?>
                             <span class="product-item-discount"><?= number_format($product->getSalePrice()) ?>₫</span>
                         </div>
                     </div>

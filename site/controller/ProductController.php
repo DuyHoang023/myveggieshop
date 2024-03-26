@@ -104,7 +104,7 @@
             $products = $productRepository->getByPattern($pattern, $sorts = null, $page, $item_per_page);
         }
         $jsonProducts = array();
-        if ($products !== '') {
+        if ($products !== '' && $products !== null) {
             foreach ($products as $product) {
                 $jsonProducts[] = array(
                     'id' => $product->getId(),

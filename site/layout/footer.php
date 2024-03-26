@@ -123,7 +123,7 @@
                         bằng Facebook</a>
                 </div>
             </div>
-            <form action="#" method="POST" role="form">
+            <form action="?c=auth&a=login" method="POST" role="form" class="form-login">
                 <div class="modal-body">
                     <div class="form-group">
                         <input type="email" name="email" class="form-control" placeholder="Email" required>
