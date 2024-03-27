@@ -118,19 +118,74 @@ class CustomerController
         }
         $email = $data['email'];
         $_SESSION['success'] = "Đã tạo tài khoản thành công, vui lòng vào email $email để kích hoạt tài khoản";
+        // gởi mail kích hoạt tài khoản
+        // mã hóa
+        $key = 'con gà đi 2 chân';
+        // dữ liệu
+        $payload = [
+            'email' => $email
+        ];
+        $jwt = JWT::encode($payload, $key, 'HS256');
+
+        $emailService = new EmailService();
+        $to = $email;
+        $subject = 'Myveggieshop - Verify your email';
+        $activeAccountLink = get_domain_site() . "?c=customer&a=activeAccount&token=$jwt";
+        $domain = get_domain();
+        $content = "
+        Dear $email, <br>
+        Vui lòng click vào link bên dưới để kích hoạt vào tài khoản <br>
+        <a href='$activeAccountLink'>Active Account</a> <br>
+        Được gởi từ trang web $domain
+        ";
+        $emailService->send($to, $subject, $content);
         header('location: /');
     }
 
-    function test1()
+    function activeAccount()
     {
-        // mã hóa
-        $key = 'example_key';
-        // dữ liệu
-        $payload = [
-            'email' => 'abc@gmail.com',
-        ];
-
-        $jwt = JWT::encode($payload, $key, 'HS256');
-        echo $jwt;
+        // giải mã
+        $key = JWT_KEY;
+        $jwt = $_GET['token'];
+        $decoded = JWT::decode($jwt, new Key($key, 'HS256'));
+        $email = $decoded->email;
+        $customerRepository = new CustomerRepository();
+        $customer = $customerRepository->findEmail($email);
+        // kích hoạt account
+        $customer->setIsActive(1);
+        if (!$customerRepository->update($customer)) {
+            $_SESSION['error'] = $customerRepository->getError();
+            header('location: /');
+            exit;
+        }
+        $_SESSION['success'] = "Đã kích hoạt tài khoản $email thành công";
+        // cho login vào hệ thống
+        $_SESSION['name'] = $customer->getName();
+        $_SESSION['email'] = $email;
+        header('location: ?c=customer&a=show');
     }
+
+    // function test1()
+    // {
+    //     // mã hóa
+    //     $key = 'con gà đi 2 chân';
+    //     // dữ liệu
+    //     $payload = [
+    //         'email' => 'abc@gmail.com',
+    //     ];
+
+    //     $jwt = JWT::encode($payload, $key, 'HS256');
+    //     echo $jwt;
+    // }
+
+    // function test2()
+    // {
+    //     // mã hóa
+    //     $key = 'con gà đi 2 chân';
+    //     // dữ liệu
+    //     $jwt = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6ImFiY0BnbWFpbC5jb20ifQ.5YWjtvg4Uzyhfe4Mbw0hrN8b0tqkVlUyrhsYVAweK0w';
+
+    //     $decoded = JWT::decode($jwt, new Key($key, 'HS256'));
+    //     print_r($decoded);
+    // }
 }
