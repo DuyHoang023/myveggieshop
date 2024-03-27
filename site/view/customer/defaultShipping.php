@@ -21,10 +21,10 @@
                         <form action="index.php?c=customer&amp;a=saveShippingAddress" method="POST" role="form">
                             <div class="row">
                                 <div class="form-group col-sm-6">
-                                    <input type="text" value="Nguyễn Hữ Lộc" class="form-control" name="fullname" placeholder="Họ và tên" required="" oninvalid="this.setCustomValidity('Vui lòng nhập tên của bạn')" oninput="this.setCustomValidity('')">
+                                    <input type="text" value="Nguyễn Phan Hoàng Duy" class="form-control" name="fullname" placeholder="Họ và tên" required="" oninvalid="this.setCustomValidity('Vui lòng nhập tên của bạn')" oninput="this.setCustomValidity('')">
                                 </div>
                                 <div class="form-group col-sm-6">
-                                    <input type="tel" value="0932538468" class="form-control" name="mobile" placeholder="Số điện thoại" required="" pattern="[0][0-9]{9,}" oninvalid="this.setCustomValidity('Vui lòng nhập số điện thoại bắt đầu bằng số 0 và ít nhất 9 con số theo sau')" oninput="this.setCustomValidity('')">
+                                    <input type="tel" value="0931347844" class="form-control" name="mobile" placeholder="Số điện thoại" required="" pattern="[0][0-9]{9,}" oninvalid="this.setCustomValidity('Vui lòng nhập số điện thoại bắt đầu bằng số 0 và ít nhất 9 con số theo sau')" oninput="this.setCustomValidity('')">
                                 </div>
                                 <div class="form-group col-sm-4">
                                     <select name="province" class="form-control province" required="" oninvalid="this.setCustomValidity('Vui lòng chọn Tỉnh / thành phố')" oninput="this.setCustomValidity('')">
@@ -126,13 +126,13 @@
                                 <div class="form-group col-sm-4">
                                     <select name="ward" class="form-control ward" required="" oninvalid="this.setCustomValidity('Vui lòng chọn Phường / xã')" oninput="this.setCustomValidity('')">
                                         <option value="">Phường / xã</option>
-                                        <option selected="" value="27037">Phường Hiệp Tân</option>
+                                        <option value="27037">Phường Hiệp Tân</option>
                                         <option value="27034">Phường Hòa Thạnh</option>
                                         <option value="27028">Phường Phú Thạnh</option>
                                         <option value="27025">Phường Phú Thọ Hòa</option>
                                         <option value="27031">Phường Phú Trung</option>
                                         <option value="27016">Phường Sơn Kỳ</option>
-                                        <option value="27019">Phường Tân Quý</option>
+                                        <option selected="" value="27019">Phường Tân Quý</option>
                                         <option value="27010">Phường Tân Sơn Nhì</option>
                                         <option value="27022">Phường Tân Thành</option>
                                         <option value="27040">Phường Tân Thới Hòa</option>

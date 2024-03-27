@@ -145,7 +145,7 @@ class CustomerController
     function activeAccount()
     {
         // giải mã
-        $key = JWT_KEY;
+        $key = 'con gà đi 2 chân';
         $jwt = $_GET['token'];
         $decoded = JWT::decode($jwt, new Key($key, 'HS256'));
         $email = $decoded->email;

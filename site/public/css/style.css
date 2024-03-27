@@ -93,6 +93,10 @@ header .list-inline {
     list-style: none;
 }
 
+.btn-logout {
+    color: #fff !important;
+}
+
 /*TOP HEADER*/
 header .call-action {
     margin-top: 5px;
@@ -377,7 +381,7 @@ main .row .button-product-action .icon a {
 }
 
 main .row .button-product-action .icon:hover {
-    background-color: var(--main-c);
+    background-color: var(--link-hover-c);
     margin: 2px;
     text-transform: linear 2s;
 }
