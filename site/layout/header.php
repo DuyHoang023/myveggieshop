@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>Trang chủ - Mỹ Phẩm Goda</title>
+    <title>Trang chủ - Thực phẩm veggieshop</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" type="image/x-icon" href="../upload/favicon/myveggieshop-favicon-color.png" />
@@ -53,11 +53,30 @@
                 </div>
                 <div class="col-md-6 col-sm-10 col-xs-11">
                     <ul class="list-inline pull-right top-right">
-                        <li class="account-login">
-                            <a href="javascript:void(0)" class="btn-register">Đăng Ký</a>
-                        </li>
+                        <?php if (empty($_SESSION['email'])) : ?>
+                            <!-- Chưa login -->
+                            <li class="account-login">
+                                <a href="javascript:void(0)" class="btn-register">Đăng Ký</a>
+                            </li>
+                        <?php else : ?>
+                            <!-- Đã login -->
+                            <a href="?c=customer&a=orders" class="btn-logout">Đơn hàng của tôi</a>
+                        <?php endif ?>
                         <li>
-                            <a href="javascript:void(0)" class="btn-login">Đăng Nhập </a>
+                            <?php if (empty($_SESSION['email'])) : ?>
+                                <!-- Chưa login -->
+                                <a href="javascript:void(0)" class="btn-login">Đăng Nhập </a>
+                            <?php else : ?>
+                                <!-- Đã login -->
+                                <a href="javascript:void(0)" class="btn-account dropdown-toggle" data-toggle="dropdown" id="dropdownMenu"><?= $_SESSION['name'] ?></a>
+                                <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu">
+                                    <li><a href="?c=customer&a=show">Thông tin tài khoản</a></li>
+                                    <li><a href="?c=customer&a=defaultShipping">Địa chỉ giao hàng</a></li>
+                                    <li><a href="?c=customer&a=orderDetail">Đơn hàng của tôi</a></li>
+                                    <li role="separator" class="divider"></li>
+                                    <li><a href="?c=auth&a=logout">Thoát</a></li>
+                                </ul>
+                            <?php endif ?>
                         </li>
                     </ul>
                 </div>
@@ -116,3 +135,5 @@
             </ul>
         </div>
     </nav>
+
+    <?php require 'layout/message.php' ?>
