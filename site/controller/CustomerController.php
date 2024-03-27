@@ -1,4 +1,8 @@
 <?php
+
+use Firebase\JWT\JWT;
+use Firebase\JWT\Key;
+
 class CustomerController
 {
     // Hiển thị thông tin tài khoản
@@ -115,5 +119,18 @@ class CustomerController
         $email = $data['email'];
         $_SESSION['success'] = "Đã tạo tài khoản thành công, vui lòng vào email $email để kích hoạt tài khoản";
         header('location: /');
+    }
+
+    function test1()
+    {
+        // mã hóa
+        $key = 'example_key';
+        // dữ liệu
+        $payload = [
+            'email' => 'abc@gmail.com',
+        ];
+
+        $jwt = JWT::encode($payload, $key, 'HS256');
+        echo $jwt;
     }
 }
