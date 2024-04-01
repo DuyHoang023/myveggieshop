@@ -131,7 +131,7 @@
             </ul>
             <span class="hidden-lg hidden-md experience">Trải nghiệm cùng sản phẩm của Veggieshop</span>
             <ul class="nav navbar-nav navbar-right">
-                <li class="cart"><a href="javascript:void(0)" class="btn-cart-detail" title="Giỏ Hàng"><i class="fa fa-shopping-cart"></i> <span class="number-total-product">6</span></a></li>
+                <li class="cart"><a href="javascript:void(0)" class="btn-cart-detail" title="Giỏ Hàng"><i class="fa fa-shopping-cart"></i> <span class="number-total-product"></span></a></li>
             </ul>
         </div>
     </nav>

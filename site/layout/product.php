@@ -16,7 +16,7 @@
     <div class="button-product-action clearfix">
         <div class="content">
             <div class="cart icon">
-                <a class="btn btn-outline-inverse buy" product-id="2" href="javascript:void(0)" title="Thêm vào giỏ">
+                <a class="btn btn-outline-inverse buy" product-id="<?= $product->getId() ?>" href="javascript:void(0)" title="Thêm vào giỏ">
                     Thêm vào giỏ <i class="fa fa-shopping-cart"></i>
                 </a>
             </div>
