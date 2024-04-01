@@ -34,7 +34,11 @@
                         </div>
                         <div class="product-status">
                             <span>Trạng thái: </span>
-                            <span class="label-warning">Hết hàng</span>
+                            <?php if ($product->getInventoryQty() > 0) : ?>
+                                <span class="label-success">Còn hàng</span>
+                            <?php else : ?>
+                                <span class="label-warning">Hết hàng</span>
+                            <?php endif ?>
                         </div>
                         <div class="product-item-price">
                             <span>Giá: </span>
