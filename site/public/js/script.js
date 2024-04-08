@@ -385,6 +385,20 @@ $(function () {
     nav: true,
   });
 
+  $("main .ship-checkout[name=payment_method]").click(function (event) {
+    /* Act on the event */
+  });
+
+  $("input[name=checkout]").click(function (event) {
+    /* Act on the event */
+    window.location.href = "?c=payment&a=checkout";
+  });
+
+  $("input[name=back-shopping]").click(function (event) {
+    /* Act on the event */
+    window.location.href = "?c=product";
+  });
+
   // Hiển thị carousel for relative products
   $("main .product-detail .product-related .owl-carousel").owlCarousel({
     loop: true,

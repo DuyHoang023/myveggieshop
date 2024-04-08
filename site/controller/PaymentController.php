@@ -3,6 +3,7 @@ class PaymentController
 {
     function checkout()
     {
+        $pattern = $_GET['pattern'] ?? null;
         //Kiểm tra giỏ hàng
         $cartStorage = new CartStorage();
         $cart = $cartStorage->fetch();
